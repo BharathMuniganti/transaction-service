@@ -9,10 +9,10 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.springboot</groupId>
-	<artifactId>atm-service</artifactId>
+	<groupId>com.backbase</groupId>
+	<artifactId>transaction-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>atm-service</name>
+	<name>transaction-service</name>
 	<description>Spring Boot Application</description>
 
 	<properties>
@@ -29,16 +29,55 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+         <groupId>org.projectlombok</groupId>
+         <artifactId>lombok</artifactId>
+         <version>1.18.4</version>
+         <scope>provided</scope>
+       </dependency>
+      <!--  <dependency>
+	    <groupId>org.mapstruct</groupId>
+	    <artifactId>mapstruct</artifactId>
+	    <version>1.3.1.Final</version> 
+	  </dependency> -->
+	   <dependency>
+	    <groupId>org.mapstruct</groupId>
+	    <artifactId>mapstruct-jdk8</artifactId>
+	    <version>1.3.0.Final</version> 
+	  </dependency>
 	</dependencies>
 
 	<build>
-	    <finalName>atm-service</finalName>
+	    <finalName>transaction-service</finalName>
 	    <testSourceDirectory>./src/test/java</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-compiler-plugin</artifactId>
+		    <version>3.5.1</version>
+		    <configuration>
+		        <source>1.8</source>
+		        <target>1.8</target>
+		        <annotationProcessorPaths>
+		           <path>
+		                <groupId>org.projectlombok</groupId>
+		                <artifactId>lombok</artifactId>
+		                <version>1.16.16</version>
+		            </path>
+		            <path>
+		                <groupId>org.mapstruct</groupId>
+		                <artifactId>mapstruct-processor</artifactId>
+		                <version>1.2.0.Final</version>
+		            </path>
+		        </annotationProcessorPaths>
+		    </configuration>
+		</plugin>
+
 		</plugins>
 	</build>
 
