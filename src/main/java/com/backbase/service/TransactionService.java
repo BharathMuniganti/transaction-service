@@ -14,6 +14,6 @@ public interface TransactionService {
 	
 	List<BackbaseResponse> getAllTransactionsByTransactionType(String transactionType);
 	
-	Long getTotalAmountByTransactionType(String transactionType);
+	Double getTotalAmountByTransactionType(String transactionType);
 	
 }

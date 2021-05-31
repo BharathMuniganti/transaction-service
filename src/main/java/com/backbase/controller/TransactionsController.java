@@ -51,7 +51,7 @@ public class TransactionsController {
 	
 	
 	@GetMapping("/totalamount")
-	public Long getTotalAmountByTransactionType(@RequestParam(value="transactionType") String transactionType ) throws JsonParseException, JsonMappingException, IOException{
+	public Double getTotalAmountByTransactionType(@RequestParam(value="transactionType") String transactionType ) throws JsonParseException, JsonMappingException, IOException{
       	
 		return transactionService.getTotalAmountByTransactionType(transactionType);
 	}

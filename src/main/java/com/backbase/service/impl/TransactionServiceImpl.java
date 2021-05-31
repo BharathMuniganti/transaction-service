@@ -62,14 +62,15 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public Long getTotalAmountByTransactionType(String transactionType) {
+	public Double getTotalAmountByTransactionType(String transactionType) {
 		
-		Long totalAmountByTransactionType = 0L ;
+		Double totalAmountByTransactionType = 0d ;
 		List<BackbaseResponse> listBackbaseResponse = getAllTransactions();
 		List<BackbaseResponse> filterListBackbaseResponse =  listBackbaseResponse.stream().filter(t -> transactionType.equalsIgnoreCase(t.getTransactionType())).collect(Collectors.toList());
-		List<Long> newList = filterListBackbaseResponse.stream()
-                .map(s -> Long.parseLong(s.getTransactionAmount()))
-                .collect(Collectors.toList());
+		
+		
+		 totalAmountByTransactionType = filterListBackbaseResponse.stream()
+                .mapToDouble(s -> Double.parseDouble(s.getTransactionAmount())).sum();
 				        
 		return totalAmountByTransactionType ;
 	}
